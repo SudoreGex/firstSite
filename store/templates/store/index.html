@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if all_bijou %}
+    <h3>The Store:</h3>
+    <ul>
+        {% for one_bijou in all_bijou %}
+        <li><a href ="{% url 'store:bijou_details' one_bijou.name %}">{{ one_bijou.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h2>The Store is empty</h2>
+{% endif %}
+</body>
+</html>
