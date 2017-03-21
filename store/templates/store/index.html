@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'store/base.html' %}
+
+{% block body %}
 {% if all_bijou %}
     <h3>The Store:</h3>
     <ul>
@@ -15,5 +11,4 @@
 {% else %}
     <h2>The Store is empty</h2>
 {% endif %}
-</body>
-</html>
+{% endblock %}

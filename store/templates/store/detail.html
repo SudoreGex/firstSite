@@ -1,32 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'store/base.html' %}
+
+{% block body %}
 <img src="{{ one_bijou.image_link }}">
 <h1>{{ one_bijou.name }}</h1>
 <h2>{{ one_bijou.price }}</h2>
+
 {% if error_message %}
-    <p>{{ error_message }}</p>
+    {{ error_message }}
 {% endif %}
 
-<form action="{% url 'store:bijou_favorite' one_bijou.name %}" method="post">
+<form action="{% url "store:bijou_favorite" one_bijou.name %}" method="post">
     {% csrf_token %}
     {% for one_sub_bijou in one_bijou.sub_bijou_set.all %}
         <input type="radio" id="sub_bijou{{ forloop.counter }}" name="sub_bijou" value="{{ one_sub_bijou.name }}">
         <label for="sub_bijou{{ forloop.counter }}">
             {{ one_sub_bijou.name }}
             {% if one_sub_bijou.favorite %}
-                <img src="http://www.jeuxvideo.com/img/forums/topic-resolu.png"/>
+                <img src="http://motouta.com/wp-content/uploads/rating_over.png">
             {% endif %}
         </label><br>
     {% endfor %}
-    <input type="submit" name="favorite_sub_bijou" value="Favorite">
-    <input type="submit" name="infavorite_sub_bijou" value="resett">
+    <input type="submit" name="favor_done" value="favorite">
+    <input type="submit" name="favor_undone" value="unfavorite">
 </form>
-
-
-</body>
-</html>
+{% endblock %}

@@ -24,22 +24,22 @@ def bijou_details(request,bijou_name):
     return render(request,'store/detail.html',{'one_bijou':one_bijou})
 
 def bijou_favorite(request,bijou_name):
-    one_bijou = get_object_or_404(bijou,name=bijou_name)
+    one_bijou = get_object_or_404(bijou, name=bijou_name)
     try:
-        one_sub_bijou = one_bijou.sub_bijou_set.get(name=request.POST['sub_bijou'])
+        one_sub_bijou = one_bijou.sub_bijou_set.get(name=request.POST["sub_bijou"])
     except (KeyError,sub_bijou.DoesNotExist):
-        return render(request,'store/detail.html',{
+        return render(request,"store/detail.html",{
             'one_bijou':one_bijou,
-            'error_message':"Your choice is invalid !!",
+            'error_message':'Your choice is invalid !!'
         })
     else:
         try:
-            if (request.POST['infavorite_sub_bijou']):
-                one_sub_bijou.favorite = False
-                one_sub_bijou.save()
-            return render(request, 'store/detail.html', {'one_bijou': one_bijou})
-        except KeyError:
-            if (request.POST['favorite_sub_bijou']):
+            if(request.POST["favor_done"]):
                 one_sub_bijou.favorite = True
                 one_sub_bijou.save()
-                return render(request, 'store/detail.html', {'one_bijou': one_bijou})
+                return render(request,"store/detail.html",{'one_bijou':one_bijou})
+        except:
+            if (request.POST["favor_undone"]):
+                one_sub_bijou.favorite = False
+                one_sub_bijou.save()
+                return render(request, "store/detail.html", {'one_bijou': one_bijou})
