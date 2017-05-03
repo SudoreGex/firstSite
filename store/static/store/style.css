@@ -1,3 +1,88 @@
 body {
-    background: white url("images/background.jpg");
+    background: url("images/floral3.jpg");
+    background-size: 40%; /* size the background image at 100% like any responsive img tag */
+    background-position: top center;
+}
+
+.bijou_image {
+    max-width: 200px;
+    height: 200px;
+}
+
+.bijou_presentation{
+    float: left;
+    margin: 10px;
+    padding: 10px;
+}
+
+.bijou_part {
+    float: left;
+    margin: 20px;
+    padding: 20px;
+}
+
+div.prix{
+    font-size: 150%;
+    color: orange;
+    display: inline;
+}
+
+.mobile_bijou_img{
+    float: left;
+    margin: 10px;
+    padding: 10px;
+}
+
+.Pacifico {
+    font-family: 'Pacifico';
+    font-size: 150%;
+    color: palegoldenrod;
+}
+
+.Mustardo {
+    font-family: Mustardo;
+    color: #691554;
+    font-size: 450%;
+    margin: 20px;
+}
+
+.BudidayaR{
+    font-family: "BudidayaR";
+    font-size: 150%;
+}
+
+.Ampera{
+    font-family: "Ampera";
+    font-size: 350%;
+}
+
+.WildCreature{
+    font-family: "WildCreature";
+    font-size: 250%;
+}
+
+
+@font-face{
+    font-family: 'Pacifico';
+    src: url("fonts/Pacifico.ttf");
+}
+
+@font-face {
+    font-family: 'Mustardo';
+    src: url("fonts/mustardo.ttf");
+}
+
+@font-face {
+    font-family: 'BudidayaR';
+    src: url("fonts/Budidaya Regular.otf");
+}
+
+@font-face {
+    font-family: 'Ampera';
+    src: url("fonts/Ampera.ttf");
+}
+
+@font-face {
+    font-family: 'WildCreature';
+    src: url("fonts/WildCreaturesSample.ttf");
 }

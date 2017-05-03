@@ -1,0 +1,27 @@
+{% extends 'store/base.html' %}
+
+{% block body %}
+<form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+<div class="container">
+	<div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="well well-sm">
+        {% for field in form %}
+            <div class="col-sm-offset-2 col-sm-10">
+                    <span class="text-danger small">{{ field.errors }}</span>
+            </div>
+            <label class="control-label col-sm-2">{{ field.label_tag }}</label>
+            <div class="col-sm-10">{{ field }}</div>
+        {% endfor %}
+        <br>
+        &emsp;
+        <br><br>
+        <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+</form>
+{% endblock %}

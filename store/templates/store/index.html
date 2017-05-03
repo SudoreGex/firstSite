@@ -2,10 +2,26 @@
 
 {% block body %}
 {% if all_bijou %}
-    <h3>The Store:</h3>
+    <div class="Mustardo">
+        La Boutique
+    </div>
     <ul>
         {% for one_bijou in all_bijou %}
-        <li><a href ="{% url 'store:bijou_details' one_bijou.name %}">{{ one_bijou.name }}</a></li>
+            <div class="bijou_presentation">
+                <a href ="{{ one_bijou.get_absolute_url }}">
+                    <img src="{{ one_bijou.image_link }}" class="img-thumbnail bijou_image" alt="{{ one_bijou.name }}">
+
+                </a>
+                <!--
+                <form method="POST" action="{% url 'store:bijou_delete' one_bijou.name %}">
+                    {% csrf_token %}
+                    <input type="submit" value="DELETE">
+                </form>
+                -->
+            </div>
+            <!--
+
+            -->
         {% endfor %}
     </ul>
 {% else %}

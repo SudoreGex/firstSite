@@ -1,26 +1,24 @@
 {% extends 'store/base.html' %}
 
 {% block body %}
-<img src="{{ one_bijou.image_link }}">
-<h1>{{ one_bijou.name }}</h1>
-<h2>{{ one_bijou.price }}</h2>
 
-{% if error_message %}
-    {{ error_message }}
-{% endif %}
+    <div class="mobile_bijou_img">
+        <img src="{{ bijou.image_link }}" style="width: 250px;">
+    </div>
+    <div class="bijou_part">
+        <div class="Ampera">{{ bijou.name }}</div>
+        <h3 class="WildCreature">
+            Prix: &emsp;
+            <div class="prix">
+                {{ bijou.price }}$
+            </div>
+        </h3>
+        <!--
+        {% for one_sub_bijou in bijou.sub_bijou_set.all %}
+            {{ one_sub_bijou.name }}<br>
+        {% endfor %}
+        -->
+    </div>
 
-<form action="{% url "store:bijou_favorite" one_bijou.name %}" method="post">
-    {% csrf_token %}
-    {% for one_sub_bijou in one_bijou.sub_bijou_set.all %}
-        <input type="radio" id="sub_bijou{{ forloop.counter }}" name="sub_bijou" value="{{ one_sub_bijou.name }}">
-        <label for="sub_bijou{{ forloop.counter }}">
-            {{ one_sub_bijou.name }}
-            {% if one_sub_bijou.favorite %}
-                <img src="http://motouta.com/wp-content/uploads/rating_over.png">
-            {% endif %}
-        </label><br>
-    {% endfor %}
-    <input type="submit" name="favor_done" value="favorite">
-    <input type="submit" name="favor_undone" value="unfavorite">
-</form>
+
 {% endblock %}
